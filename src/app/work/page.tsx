@@ -4,34 +4,40 @@ import { useState } from 'react';
 import ProjectCard from '../../component/ProjectCard';
 
 const projects = [
-  {
-    id: 'ahasna-car-services',
-    title: 'Ahasna Car Services',
-    category: 'Web Development',
-    imageSrc: '/taxi.png',
-  },
-  {
-    id: 'E-Library',
-    title: 'E-Library',
-    category: 'Web Development',
-    imageSrc: '/elibrary.png',
-  },
-  {
-    id: 'khora',
-    title: 'Recipe Sharing',
-    category: 'Web Development',
-    imageSrc: '/flavour.png',
-  },
-  {
-    id: 'crop-care-app',
-    title: 'Crop Care App',
-    category: 'App Development',
-    imageSrc: '/taxi.png',
-  },
-  
-  
-  // Add more project details as necessary
-];
+    {
+      id: 'drivex',
+      title: 'DriveX',
+      category: 'Web Development',
+      imageSrc: '/drivex.png',
+    },
+    {
+      id: 'novacare',
+      title: 'NOVA CARE',
+      category: 'Web Development',
+      imageSrc: '/novacare.png',
+    },
+    {
+      id: 'e-library',
+      title: 'E- Library',
+      category: 'Web Development',
+      imageSrc: '/elibrary.png',
+    },
+    {
+      id: 'n and b',
+      title: 'N & B Taxi Services',
+      category: 'Web Development',
+      imageSrc: '/nb.png',
+    },
+    {
+      id: 'crop-care-app',
+      title: 'Crop Care App',
+      category: 'App Development',
+      imageSrc: '/cropcare.png',
+    },
+    
+    
+    
+  ];
 
 export default function Work() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -41,7 +47,7 @@ export default function Work() {
     : projects.filter(project => project.category === selectedCategory);
 
   return (
-    <div className="container" style={{ fontFamily: 'Courier New, Courier, monospace' }}>
+    <div className="container " >
       <h1 className='text-4xl font-bold text-center mb-12 mt-5'>MY WORK</h1>
       <div className="buttons mb-12">
         <button 
@@ -77,7 +83,7 @@ export default function Work() {
       <style jsx>{`
         .container {
           padding: 50px;
-          background-color: black;
+          background-color: #1F2937;
           color: white;
           max-width: 100%;
         }
