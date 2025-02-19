@@ -99,10 +99,10 @@ export default function Work() {
         .buttons {
           display: flex;
           justify-content: flex-start;
-          gap: 10px;
+          gap: 5px;
         }
         .category-button {
-          padding: 10px 20px;
+          padding: 5px 10px;
           border: none;
           cursor: pointer;
           background-color: white;
