@@ -116,12 +116,13 @@ const ProjectClientComponent: React.FC<ProjectClientComponentProps> = ({ project
         </motion.div>
       )}
 
-<div className="mt-8 flex gap-6 justify-center">
+<div className="mt-8 flex gap-2 justify-center">
   {project.githubRepo && (
     <motion.a 
       href={project.githubRepo} 
       target="_blank" 
-      className="px-8 py-3 bg-gray-800 text-white rounded-lg text-m font-medium shadow-md hover:bg-gray-700 transition-colors duration-300"
+      rel="noopener noreferrer"
+      className="px-5 py-3 bg-gray-800 text-white rounded-lg text-sm font-medium shadow-md hover:bg-gray-700 transition-colors duration-300"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -134,7 +135,8 @@ const ProjectClientComponent: React.FC<ProjectClientComponentProps> = ({ project
     <motion.a 
       href={project.deploymentLink} 
       target="_blank" 
-      className="px-8 py-3 bg-gray-800 text-white rounded-lg text-m font-medium shadow-md hover:bg-gray-700 transition-colors duration-300"
+      rel="noopener noreferrer"
+      className="px-5 py-3 bg-gray-800 text-white rounded-lg text-sm font-medium shadow-md hover:bg-gray-700 transition-colors duration-300"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -147,7 +149,8 @@ const ProjectClientComponent: React.FC<ProjectClientComponentProps> = ({ project
     <motion.a 
       href={project.websiteLink} 
       target="_blank" 
-      className="px-8 py-3 bg-gray-800 text-white rounded-lg text-m font-medium shadow-md hover:bg-gray-700 transition-colors duration-300"
+      rel="noopener noreferrer"
+      className="px-5 py-3 bg-gray-800 text-white rounded-lg text-sm font-medium shadow-md hover:bg-gray-700 transition-colors duration-300"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
