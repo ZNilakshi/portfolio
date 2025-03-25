@@ -40,7 +40,7 @@
   font-size: 16px;
 }
 
-/* Active link style */
+
 .navLinks a.active {
   color: #5fb4a2;
   font-weight: bold;
@@ -50,7 +50,7 @@
   color: #5fb4a2;
 }
 
-/* Mobile styles */
+
 .menuIcon {
   display: none;
   font-size: 24px;

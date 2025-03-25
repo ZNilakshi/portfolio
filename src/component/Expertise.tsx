@@ -20,7 +20,7 @@ export default function Expertise() {
           MY EXPERTISE
         </motion.h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Full-Stack Development */}
+         
           <motion.div
             className="border border-gray-700 p-8 rounded-2xl text-center bg-black shadow-lg hover:shadow-xl transition-shadow duration-300"
             whileHover={{ scale: 1.05 }}
@@ -48,7 +48,7 @@ export default function Expertise() {
             </p>
           </motion.div>
 
-          {/* Flutter Development */}
+         
           <motion.div
             className="border border-gray-700 p-8 rounded-2xl text-center bg-black shadow-lg hover:shadow-xl transition-shadow duration-300"
             whileHover={{ scale: 1.05 }}

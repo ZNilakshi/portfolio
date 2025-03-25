@@ -4,7 +4,7 @@ import { FaLinkedin, FaGithub, FaFacebook, FaWhatsapp } from "react-icons/fa";
 const Contact = () => {
   return (
     <div className="flex flex-wrap items-center justify-center p-12 bg-gray-800 text-white  shadow-lg w-full" style={{ fontFamily: 'Courier New, Courier, monospace' }}>
-      {/* Left Section */}
+      
       <div className="flex-1 min-w-[300px] text-left pr-10">
         <h1 className="text-6xl font-bold uppercase leading-tight">
           Let&apos;s <br />
@@ -16,9 +16,9 @@ const Contact = () => {
         </p>
       </div>
 
-     {/* Right Section */}
+    
      <div className="flex-1 min-w-[400px] text-center p-8 bg-black rounded-xl shadow-md">
-        {/* Contact Details */}
+      
         <div className="mb-6">
           <h3 className="text-3xl font-bold text-green-400 uppercase tracking-wide">Get In Touch</h3>
           <a href="mailto:nilakshisamarasekara0@gmail.com" className="block mt-2 text-lg font-medium text-white border-b-2 border-teal-400 hover:text-teal-400 transition-colors">
@@ -26,7 +26,7 @@ const Contact = () => {
           </a>
         </div>
 
-        {/* Social Icons */}
+      
         <div>
           <h3 className="text-2xl font-semibold text-green-400 mb-6 uppercase tracking-wide">Connect With Me</h3>
           <div className="flex justify-center space-x-8">

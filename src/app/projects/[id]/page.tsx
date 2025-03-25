@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import type { Project } from './ProjectClientComponent';
 
-// Array of project data with added link, features, and type
+
 const projects : Project[] = [
   {
     id: 'drivex',
@@ -15,10 +15,9 @@ const projects : Project[] = [
     imageGallery: [
       
     ],
-     // Add project link (can be used for a main website or demo)
-    githubRepo: 'https://github.com/ZNilakshi/TAXI-booking.git',  // GitHub repository link
-    deploymentLink: 'https://ahasnabooking.vercel.app/',  // Deployment link (if available)
-    websiteLink: 'https://www.drivex.lk/',  // Website link
+        githubRepo: 'https://github.com/ZNilakshi/TAXI-booking.git',  
+    deploymentLink: 'https://ahasnabooking.vercel.app/',  
+    websiteLink: 'https://www.drivex.lk/',  
     features: [
       "User Authentication – Secure login and registration via email & password or Google Sign-In.",
       "Ride Booking System – Users can enter pickup & drop-off locations, date, and time to book a ride.",
@@ -31,7 +30,7 @@ const projects : Project[] = [
       "Customer Support & Feedback – Users can send inquiries to support and leave ratings & reviews.",
       "Mobile & Desktop Responsive Design – Ensures seamless user experience on all devices."
     ]
-,        type: 'Individual',  // Add project type
+,        type: 'Individual',  
   },
   {
     id: 'novacare',
@@ -51,8 +50,8 @@ const projects : Project[] = [
           "Responsive Design",
           "Admin Panel (Upcoming)",
           "Payment Integration (Upcoming)"
-        ],  // Add project features
-    type: 'Individual',  // Add project type
+        ], 
+    type: 'Individual',  
   }, 
   {
     id: 'e-library',
@@ -69,25 +68,24 @@ const projects : Project[] = [
       "Favorites & Downloads (Track saved and downloaded books)",
       "Profile Management (View and manage saved books)",
       "Responsive Design (Optimized for desktop and mobile)"
-    ],  // Add project features
-    type: 'Individual',  // Add project type
+    ],  
+    type: 'Individual', 
   }, 
   {
-    id: 'n-and-b',
+    id: 'n_and_b',
     title: 'N & B Taxi Services',
     category: 'Web Development',
     client: 'Mr Devapriya',
     description: 'A convenient taxi booking platform where users can book rides with ease. The website features an interactive map for ride tracking and includes a responsive vehicle section for browsing available vehicles. It ensures a smooth and user-friendly experience for both desktop and mobile users.',
     technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
     imageSrc: '/nb.png',
-     githubRepo: 'https://github.com/ZNilakshi/N-B.git',  // GitHub repository link
-    deploymentLink: 'https://n-b.vercel.app/',  // Deployment link (if available)
+     githubRepo: 'https://github.com/ZNilakshi/N-B.git',  
+    deploymentLink: 'https://n-b.vercel.app/',  
         features: [  "Ride Booking (Select destination and vehicle)",
       "Interactive Map ",
       "Responsive Vehicle Section ",
       "User-Friendly Interface (Intuitive design)",
-      "Mobile & Desktop Optimization (Fully responsive)"],  // Add project features
-    type: 'Individual',  // Add project type
+      "Mobile & Desktop Optimization (Fully responsive)"],  
   }, 
   {
     id: 'crop-care-app',
@@ -103,34 +101,42 @@ const projects : Project[] = [
     features: ["Disease Detection (Upload images to detect diseases)",
    "User-Friendly Interface (Intuitive design for easy navigation)",
   "Real-Time Analysis (Instant feedback after uploading images)",],  // Add project features
-    type: 'Group',  // Add project type
+    type: 'Group',  
+  }, 
+  {
+    id: 'lylu',
+    title: 'LYLU',
+    category: 'Web Development',
+   
+    description: 'LYLU is a modern, eco-friendly online marketplace for buying and selling second-hand or new goods. Designed to promote sustainability, it offers a seamless platform for users to give pre-loved items a new life while reducing waste.',
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
+    imageSrc: '/lylu.png',
+    imageGallery: [
+      
+    ],
+    features: [ "Google OAuth Login - Secure authentication via Google",
+      "Dynamic Product Listings - Post, browse, and filter  items",
+      "Image Uploads (Cloudinary) - High-quality image storage & optimization",],  
+    type: 'Group',  
   }, 
 ];
 
-// Function to generate static paths for each project
 export async function generateStaticParams() {
   return projects.map((project) => ({
     id: project.id,
   }));
 }
 
-// Dynamically import ProjectClientComponent without server-side rendering
 const ProjectClientComponent = dynamic(() => import('./ProjectClientComponent'), { ssr: false });
 
-// Main ProjectPage component
 export default function ProjectPage({ params }: { params: { id: string } }) {
-  // Find project by ID from the URL params
-  const project = projects.find((project) => project.id === params.id);
-
-  // If project not found, trigger 404 page
+    const project = projects.find((project) => project.id === params.id);
   if (!project) {
     notFound();
   }
 
-  // Get the next project in the array for the "Next Project" functionality
-  const currentIndex = projects.findIndex((p) => p.id === params.id);
+   const currentIndex = projects.findIndex((p) => p.id === params.id);
   const nextProject = projects[currentIndex + 1] || null;
 
-  // Render the client-side project component with the project data
-  return <ProjectClientComponent project={project} nextProject={nextProject} />;
+    return <ProjectClientComponent project={project} nextProject={nextProject} />;
 }

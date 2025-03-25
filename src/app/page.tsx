@@ -25,7 +25,7 @@ const ProfileCard: React.FC = () => {
 
 >
     <div className="flex flex-col md:flex-row items-center gap-10">
-        {/* Left Text Section */}
+       
         <div className="max-w-lg text-center md:text-left">
           <h1 className="text-5xl font-bold">
             HI, 
@@ -41,7 +41,7 @@ const ProfileCard: React.FC = () => {
           
         </div>
 
-       {/* Right Image Section */}
+     
 <div className="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
   <motion.div
     className="absolute w-[110%] h-[110%] border-[14px] border-green-400"
@@ -54,7 +54,7 @@ const ProfileCard: React.FC = () => {
   
   <motion.div whileHover={{ scale: 1.1 }}>
     <Image
-      src="/baba.jpg" // Replace with the correct image path
+      src="/baba.jpg" 
       alt="Profile"
       width={200}
       height={200}
@@ -68,7 +68,7 @@ const ProfileCard: React.FC = () => {
 
       </div>
     </div>
-          {/* Sections Below Home */}
+          
           <div >
         <Expertise />
         <Work />

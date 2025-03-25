@@ -1,4 +1,4 @@
-// src/app/work/page.tsx
+
 "use client";
 import { useState } from 'react';
 import ProjectCard from '../../component/ProjectCard';
@@ -23,7 +23,7 @@ const projects = [
       imageSrc: '/elibrary.png',
     },
     {
-      id: 'n and b',
+      id: 'n_and_b',
       title: 'N & B Taxi Services',
       category: 'Web Development',
       imageSrc: '/nb.png',
@@ -35,7 +35,13 @@ const projects = [
       imageSrc: '/cropcare.png',
     },
     
-    
+    {
+      id: 'lylu',
+      title: 'LYLU',
+      category: 'Web Development',
+      imageSrc: '/lylu.png',  
+    }
+    ,
     
   ];
 

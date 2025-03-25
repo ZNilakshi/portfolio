@@ -1,14 +1,14 @@
-"use client";  // Ensure it's a client component
+"use client"; 
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation'; // ✅ Use usePathname instead of useRouter
+import { usePathname } from 'next/navigation'; 
 import { FiMenu, FiX } from 'react-icons/fi';
 import styles from './Navbar.module.css';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname(); // ✅ Get the current path
+  const pathname = usePathname(); 
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
