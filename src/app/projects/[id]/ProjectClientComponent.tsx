@@ -20,6 +20,7 @@ export interface Project {
   githubRepo?: string;
   deploymentLink?: string;
   websiteLink?: string;
+  videoUrl?: string;
 }
 
 
@@ -197,7 +198,34 @@ const ProjectClientComponent: React.FC<ProjectClientComponentProps> = ({ project
           ))}
         </motion.div>
       )}
-
+   { /*    
+{project.videoUrl && (
+  <motion.div 
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    className="mt-10 w-full max-w-5xl rounded-lg overflow-hidden shadow-lg"
+  >
+    {project.videoUrl.includes('youtube.com') || project.videoUrl.includes('vimeo.com') ? (
+      <div className="aspect-w-16 aspect-h-9">
+        <iframe 
+          src={project.videoUrl} 
+          className="w-full h-96 rounded-lg"
+          frameBorder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowFullScreen
+        ></iframe>
+      </div>
+    ) : (
+      <video 
+        controls 
+        className="w-full rounded-lg"
+        src={project.videoUrl}
+      />
+    )}
+  </motion.div>
+)}
+  */}
       {nextProject && (
         <motion.div 
           initial={{ opacity: 0, y: 30 }}

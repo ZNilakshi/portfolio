@@ -87,39 +87,54 @@ export default function Work() {
         ))}
       </div>
       <style jsx>{`
-        .container {
-          padding: 50px;
-          background-color: #1F2937;
-          color: white;
-          max-width: 100%;
-        }
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-          gap: 20px;
-        }
-        h1 {
-          text-align: center;
-          margin-bottom: 20px;
-        }
-        .buttons {
-          display: flex;
-          justify-content: flex-start;
-          gap: 5px;
-        }
-        .category-button {
-          padding: 5px 10px;
-          border: none;
-          cursor: pointer;
-          background-color: white;
-          color: black;
-          font-weight: bold;
-        }
-        .category-button.active {
-          background-color: grey;
-          color: white;
-        }
-      `}</style>
+  .container {
+    padding: 50px;
+    background-color: #1F2937;
+    color: white;
+    max-width: 100%;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns by default */
+    gap: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+  }
+  .category-button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+  }
+  .category-button.active {
+    background-color: grey;
+    color: white;
+  }
+
+  /* Medium screens (tablets) */
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+    }
+  }
+
+  /* Large screens */
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(4, 1fr); /* 4 columns on large screens */
+    }
+  }
+`}</style>
     </div>
   );
 }

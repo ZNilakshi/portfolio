@@ -52,6 +52,7 @@ const projects : Project[] = [
           "Payment Integration (Upcoming)"
         ], 
     type: 'Individual',  
+    videoUrl: 'https://www.youtube.com/embed/your-video-id',
   }, 
   {
     id: 'e-library',

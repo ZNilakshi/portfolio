@@ -30,7 +30,7 @@ const Contact = () => {
         <div>
           <h3 className="text-2xl font-semibold text-green-400 mb-6 uppercase tracking-wide">Connect With Me</h3>
           <div className="flex justify-center space-x-8">
-            <a href="www.linkedin.com/in/nilakshi-samarasekara-368642252" className="text-white text-4xl transition-transform duration-300 hover:text-teal-400 hover:scale-125">
+            <a href="https://www.linkedin.com/in/znilakshi" className="text-white text-4xl transition-transform duration-300 hover:text-teal-400 hover:scale-125">
               <FaLinkedin />
             </a>
             <a href="https://github.com/ZNilakshi" className="text-white text-4xl transition-transform duration-300 hover:text-teal-400 hover:scale-125">
