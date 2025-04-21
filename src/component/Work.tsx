@@ -97,7 +97,7 @@ const projects = [
           .work-title {
             font-size: 2.5rem;
             font-weight: 700;
-            background: linear-gradient(to right, #6366f1, #8b5cf6);
+            background: linear-gradient(to right, #4ade80, #4ade80 );
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
