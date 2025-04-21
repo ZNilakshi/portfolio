@@ -44,96 +44,122 @@ const projects = [
     ,
   ];
 
-export default function Work() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-
-  const filteredProjects = selectedCategory === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === selectedCategory);
-
-  return (
-    <div className="container " >
-      <h1 className='text-4xl font-bold text-center mb-12 mt-5'>MY WORK</h1>
-      <div className="buttons mb-12">
-        <button 
-          className={`category-button ${selectedCategory === 'All' ? 'active' : ''}`} 
-          onClick={() => setSelectedCategory('All')}
-        >
-          All
-        </button>
-        <button 
-          className={`category-button ${selectedCategory === 'Web Development' ? 'active' : ''}`} 
-          onClick={() => setSelectedCategory('Web Development')}
-        >
-          Web Development
-        </button>
-        <button 
-          className={`category-button ${selectedCategory === 'App Development' ? 'active' : ''}`} 
-          onClick={() => setSelectedCategory('App Development')}
-        >
-          App Development
-        </button>
-      </div>
-      <div className="grid">
-        {filteredProjects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            id={project.id}
-            title={project.title}
-            category={project.category}
-            imageSrc={project.imageSrc}
-          />
-        ))}
-      </div>
-      <style jsx>{`
-  .container {
-    padding: 50px;
-    background-color: #1F2937;
-    color: white;
-    max-width: 100%;
+  export default function Work() {
+    const [selectedCategory, setSelectedCategory] = useState('All');
+  
+    const filteredProjects = selectedCategory === 'All' 
+      ? projects 
+      : projects.filter(project => project.category === selectedCategory);
+  
+    return (
+      <section className="work-section">
+        <div className="work-container">
+          <h1 className="work-title">My Projects</h1>
+          <p className="work-subtitle">A collection of my recent work</p>
+          
+          <div className="category-filter">
+            {['All', 'Web Development', 'App Development'].map((category) => (
+              <button
+                key={category}
+                className={`filter-button ${selectedCategory === category ? 'active' : ''}`}
+                onClick={() => setSelectedCategory(category)}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+  
+          <div className="projects-grid">
+            {filteredProjects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                id={project.id}
+                title={project.title}
+                category={project.category}
+                imageSrc={project.imageSrc}
+              />
+            ))}
+          </div>
+        </div>
+  
+        <style jsx>{`
+          .work-section {
+            padding: 4rem 1rem;
+            background: linear-gradient(to bottom, #0f172a, #1e293b);
+            min-height: 100vh;
+          }
+          
+          .work-container {
+            max-width: 1200px;
+            margin: 0 auto;
+          }
+          
+          .work-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            text-align: center;
+          }
+          
+          .work-subtitle {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 3rem;
+          }
+          
+          .category-filter {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+          }
+          
+          .filter-button {
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: #e2e8f0;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+          }
+          
+          .filter-button:hover {
+            background: #334155;
+          }
+          
+          .filter-button.active {
+            background: #4ade80 ;
+            border-color: #4ade80;
+            color: white;
+          }
+          
+          .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+          }
+          
+          @media (max-width: 768px) {
+            .work-section {
+              padding: 2rem 1rem;
+            }
+            
+            .work-title {
+              font-size: 2rem;
+            }
+            
+            .projects-grid {
+              grid-template-columns: 1fr;
+            }
+          }
+        `}</style>
+      </section>
+    );
   }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns by default */
-    gap: 20px;
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .buttons {
-    display: flex;
-    justify-content: flex-start;
-    gap: 5px;
-    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
-  }
-  .category-button {
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    background-color: white;
-    color: black;
-    font-weight: bold;
-  }
-  .category-button.active {
-    background-color: grey;
-    color: white;
-  }
-
-  /* Medium screens (tablets) */
-  @media (min-width: 768px) {
-    .grid {
-      grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
-    }
-  }
-
-  /* Large screens */
-  @media (min-width: 1024px) {
-    .grid {
-      grid-template-columns: repeat(4, 1fr); /* 4 columns on large screens */
-    }
-  }
-`}</style>
-    </div>
-  );
-}
