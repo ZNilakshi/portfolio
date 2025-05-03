@@ -16,7 +16,7 @@ export interface Project {
   link?: string;
   imageGallery?: string[];
   features?: string[];
-  type?: "Individual" | "Group";
+  type?: "Individual" | "Group" | "Dual";
   githubRepo?: string;
   deploymentLink?: string;
   websiteLink?: string;

@@ -48,8 +48,8 @@ const projects : Project[] = [
           "Doctor Search",
           "Medicine Purchase",
           "Responsive Design",
-          "Admin Panel (Upcoming)",
-          "Payment Integration (Upcoming)"
+          "Admin Panel ",
+          "Payment Integration "
         ], 
     type: 'Individual',  
     videoUrl: 'https://www.youtube.com/embed/your-video-id',
@@ -77,7 +77,7 @@ const projects : Project[] = [
     title: 'N & B Taxi Services',
     category: 'Web Development',
     client: 'Mr Devapriya',
-    description: 'A convenient taxi booking platform where users can book rides with ease. The website features an interactive map for ride tracking and includes a responsive vehicle section for browsing available vehicles. It ensures a smooth and user-friendly experience for both desktop and mobile users.',
+    description: 'A convenient taxi booking platform where users can book rides with ease. The website features an interactive map for ride tracking and includes a responsive vehicle section for browsing available vehicles. It ensures a smooth and user-friendly experience for both desktop and mobile users. (Ongoing project)',
     technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
     imageSrc: '/nb.png',
      githubRepo: 'https://github.com/ZNilakshi/N-B.git',  
@@ -118,7 +118,35 @@ const projects : Project[] = [
     features: [ "Google OAuth Login - Secure authentication via Google",
       "Dynamic Product Listings - Post, browse, and filter  items",
       "Image Uploads (Cloudinary) - High-quality image storage & optimization",],  
-    type: 'Group',  
+    type: 'Dual',  
+  }, 
+  {
+    id: 'teacher',
+    title: 'Teacher Mutual Transfer Portal',
+    category: 'Web Development',
+    description: 'Teacher Transfer Hub is an intuitive web platform designed to simplify the teacher transfer process across schools. It enables educators to submit their transfer requests, discover matching teachers based on preferences, and connect with them directly. This system promotes transparency and ease in managing mutual transfers between schools and regions',
+    
+    technologies: ['React.js', 'MongoDB', 'Express.js', 'Node.js'],
+    imageSrc: '/teacher.png',
+     githubRepo: 'https://github.com/ZNilakshi/Swap.git',  
+    deploymentLink: 'https://swap-ayoh.vercel.app',  
+    features: [
+      "Transfer Request Submission",
+      "Preferred Location Selection",
+      "Subject and Grade Level Filtering",
+      "Matching Transfer Search",
+      "Direct WhatsApp Contact",
+      "Request Visibility Management",
+      "Step-by-Step Guided Process",
+      "Responsive Design",
+      "User Authentication (Upcoming)",
+      "User Profile Management (Upcoming)",
+      "Admin Panel for Transfer Management (Upcoming)",
+      
+    ],
+    
+    type: 'Individual',  
+    videoUrl: 'https://www.youtube.com/embed/your-video-id',
   }, 
 ];
 

@@ -45,7 +45,13 @@ const projects: Project[] = [
     title: 'LYLU',
     category: 'Web Development',
     imageSrc: '/lylu.png',  
-  }
+  },
+  {
+    id: 'teacher',
+    title: 'Mutual Transfer Portal',
+    category: 'Web Development',
+    imageSrc: '/teacher.png',
+  },
 ];
 
 export default function Work() {
