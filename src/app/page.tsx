@@ -54,7 +54,7 @@ const ProfileCard: React.FC = () => {
   
   <motion.div whileHover={{ scale: 1.1 }}>
     <Image
-      src="/baba.jpg" 
+      src="/baba.jpeg" 
       alt="Profile"
       width={200}
       height={200}
