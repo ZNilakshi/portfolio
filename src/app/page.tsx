@@ -73,6 +73,9 @@ const ProfileCard: React.FC = () => {
         <Expertise />
         <Work />
         <Contact />
+        <footer className="bg-black text-center py-6 text-sm text-gray-400">
+        &copy; {new Date().getFullYear()} Nilakshi Samarasekara. All rights reserved.
+      </footer>
       </div>
     </div>
     
