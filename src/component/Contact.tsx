@@ -3,9 +3,7 @@ import React from "react";
 import { FaLinkedin, FaGithub, FaFacebook, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 
 const Contact = () => {
-  const handleWhatsAppClick = () => {
-    window.open("https://wa.me/94702610614?text=Hi%20Nilakshi,%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect...", "_blank");
-  };
+
 
   const handleEmailClick = () => {
     window.location.href = "mailto:nilakshisamarasekara0@gmail.com?subject=Contact%20from%20Portfolio&body=Hi%20Nilakshi,%0A%0AI%20found%20your%20portfolio%20and...";
