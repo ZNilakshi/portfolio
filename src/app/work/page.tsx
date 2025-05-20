@@ -7,6 +7,7 @@ type Project = {
   title: string;
   category: string;
   imageSrc: string;
+  technologies?: string[]; // Optional property for technologies
 };
 
 const projects: Project[] = [
@@ -15,48 +16,56 @@ const projects: Project[] = [
     title: 'DriveX',
     category: 'Web Development',
     imageSrc: '/drivex.png',
+    technologies: ['Next.js', 'Node.js', 'Express.js', 'MongoDB'],
   },
   {
     id: 'novacare',
     title: 'NOVA CARE',
     category: 'Web Development',
     imageSrc: '/novacare.png',
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
   },
   {
     id: 'e-library',
     title: 'E- Library',
     category: 'Web Development',
     imageSrc: '/elibrary.png',
+    technologies: ['Next.js', 'Node.js', 'Express.js', 'MongoDB'],
   },
   {
     id: 'n_and_b',
     title: 'N & B Taxi Services',
     category: 'Web Development',
     imageSrc: '/nb.png',
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
   },
   {
     id: 'crop-care-app',
     title: 'Crop Care App',
     category: 'App Development',
     imageSrc: '/cropcare.png',
+    technologies: ['Flutter', 'Java kotlin', 'Python', 'MongoDB'],
   },
   {
     id: 'lylu',
     title: 'LYLU',
     category: 'Web Development',
     imageSrc: '/lylu.png',  
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
   },
   {
     id: 'teacher',
     title: 'Mutual Transfer Portal',
     category: 'Web Development',
     imageSrc: '/teacher.png',
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
   },
   {
     id: 'silva',
     title: 'De Silva Bar',
     category: 'Web Development',
     imageSrc: '/bar.png',
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
   },
 ];
 
@@ -103,6 +112,7 @@ export default function Work() {
               title={project.title}
               category={project.category}
               imageSrc={project.imageSrc}
+              technologies={project.technologies}
             />
           ))}
         </div>

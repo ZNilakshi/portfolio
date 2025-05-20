@@ -7,6 +7,7 @@ type Project = {
   title: string;
   category: string;
   imageSrc: string;
+  technologies?: string[]; // Optional property for technologies
 };
 
 const projects: Project[] = [
@@ -15,48 +16,56 @@ const projects: Project[] = [
     title: 'DriveX',
     category: 'Web Development',
     imageSrc: '/drivex.png',
+    technologies: ['Next.js', 'Node.js', 'Express.js', 'MongoDB'],
   },
   {
     id: 'novacare',
     title: 'NOVA CARE',
     category: 'Web Development',
     imageSrc: '/novacare.png',
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
   },
   {
     id: 'e-library',
     title: 'E- Library',
     category: 'Web Development',
     imageSrc: '/elibrary.png',
+    technologies: ['Next.js', 'Node.js', 'Express.js', 'MongoDB'],
   },
   {
     id: 'n_and_b',
     title: 'N & B Taxi Services',
     category: 'Web Development',
     imageSrc: '/nb.png',
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
   },
   {
     id: 'crop-care-app',
     title: 'Crop Care App',
     category: 'App Development',
     imageSrc: '/cropcare.png',
+    technologies: ['Flutter', 'Java kotlin', 'Python', 'MongoDB'],
   },
   {
     id: 'lylu',
     title: 'LYLU',
     category: 'Web Development',
     imageSrc: '/lylu.png',  
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
   },
   {
     id: 'teacher',
     title: 'Mutual Transfer Portal',
     category: 'Web Development',
     imageSrc: '/teacher.png',
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
   },
   {
     id: 'silva',
     title: 'De Silva Bar',
     category: 'Web Development',
     imageSrc: '/bar.png',
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
   },
 ];
 
@@ -70,15 +79,14 @@ export default function Work() {
   return (
     <section className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 py-16 px-4">
       <div className="max-w-6xl mx-auto">
-        
-        <h1 className="text-5xl md:text-5xl font-bold text-center mb-2 bg-gradient-to-r from-green-400 to-green-400 bg-clip-text text-transparent">
+      <h1 className="text-5xl md:text-5xl font-bold text-center mb-2 bg-gradient-to-r from-green-400 to-green-400 bg-clip-text text-transparent">
           MY PROJECTS
         </h1>
         <p className="text-slate-400 text-xl text-center mb-12">
           A collection of my recent work
         </p>
 
-       
+      
         <div className="flex gap-3 justify-center flex-wrap mb-12">
           {['All', 'Web Development', 'App Development'].map((category) => (
             <button
@@ -95,7 +103,7 @@ export default function Work() {
           ))}
         </div>
 
-       
+        {/* Projects Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
             <ProjectCard
@@ -104,6 +112,7 @@ export default function Work() {
               title={project.title}
               category={project.category}
               imageSrc={project.imageSrc}
+              technologies={project.technologies}
             />
           ))}
         </div>

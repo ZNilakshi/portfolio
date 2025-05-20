@@ -8,9 +8,16 @@ interface ProjectCardProps {
   title: string;
   category: string;
   imageSrc: string;
+  technologies?: string[]; // Add technologies prop
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, category, imageSrc }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ 
+  id, 
+  title, 
+  category, 
+  imageSrc,
+  technologies = [] // Default empty array
+}) => {
   return (
     <div className="project-card-wrapper">
       <Link href={`/projects/${id}`} passHref>
@@ -34,6 +41,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, category, imageSrc
           </div>
           <div className="card-content">
             <h3 className="card-title">{title}</h3>
+            {/* Technologies Badges */}
+            {technologies.length > 0 && (
+              <div className="tech-badges">
+                {technologies.map((tech) => (
+                  <span key={tech} className="tech-badge">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
             <div className="card-footer">
               <span className="card-link">See details →</span>
             </div>
@@ -143,6 +160,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, category, imageSrc
           font-weight: 600;
           color: #f8fafc;
           margin-bottom: 0.5rem;
+        }
+
+        /* New Tech Badges Styles */
+        .tech-badges {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .tech-badge {
+          background: rgba(148, 163, 184, 0.2);
+          color: #94a3b8;
+          padding: 0.25rem 0.5rem;
+          border-radius: 4px;
+          font-size: 0.7rem;
+          font-weight: 500;
+          border: 1px solid rgba(148, 163, 184, 0.1);
         }
         
         .card-footer {
