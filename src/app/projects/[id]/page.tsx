@@ -10,6 +10,7 @@ const projects : Project[] = [
     category: 'Web Development',
     description: 'This MERN stack-based vehicle booking system provides a seamless experience for users looking to book rides for weddings, airport transfers, long-distance travel, and point-to-point trips. It includes a user-friendly interface, real-time route mapping, dynamic pricing, and an admin panel for management.',
     client: 'Mr Dilhan Perera',
+    timeframe: 'Feb - Oct 2024‌',
     technologies: ['Next.js', 'MongoDB', 'Express.js', 'Node.js'],
     imageSrc: '/drivex.png',
     imageGallery: [
@@ -37,7 +38,7 @@ const projects : Project[] = [
     title: 'NOVA CARE',
     category: 'Web Development',
     description: 'Nova Care is a group hospital with branches. The website allows users to book appointments, find hospital branches, and search for doctors. It also includes an option to buy medicine. The project is still in progress, with a payment feature yet to be implemented.',
-    
+    timeframe: '‌ Jan - Feb 2025‌',
     technologies: ['React.js', 'MongoDB', 'Express.js', 'Node.js'],
     imageSrc: '/novacare.png',
      githubRepo: 'https://github.com/ZNilakshi/Nova-Care.git',  // GitHub repository link
@@ -58,7 +59,7 @@ const projects : Project[] = [
     id: 'e-library',
     title: 'E- Library',
     category: 'Web Development',
-    
+    timeframe: '‌ Aug - Sep 2024‌‌',
     description: 'A digital library platform where users can discover, download, and save books',
     technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
     imageSrc: '/elibrary.png',
@@ -77,6 +78,7 @@ const projects : Project[] = [
     title: 'N & B Taxi Services',
     category: 'Web Development',
     client: 'Mr Devapriya',
+    timeframe: '‌ ‌Ongoing Project‌',
     description: 'A convenient taxi booking platform where users can book rides with ease. The website features an interactive map for ride tracking and includes a responsive vehicle section for browsing available vehicles. It ensures a smooth and user-friendly experience for both desktop and mobile users. (Ongoing project)',
     technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
     imageSrc: '/nb.png',
@@ -92,7 +94,7 @@ const projects : Project[] = [
     id: 'crop-care-app',
     title: 'Crop Care App',
     category: 'App Development',
-   
+    timeframe: '‌ ‌ Jul - Nov 2024‌',
     description: 'CropCare is an innovative crop disease detection app designed to help farmers and agricultural professionals identify plant diseases effectively',
     technologies: ['Flutter', 'Python', 'Java kotlin', 'MongoDB'],
     imageSrc: '/cropcare.png',
@@ -108,7 +110,7 @@ const projects : Project[] = [
     id: 'lylu',
     title: 'LYLU',
     category: 'Web Development',
-   
+   timeframe: '‌ Feb - Mar‌ ‌ 2025‌ ‌',
     description: 'LYLU is a modern, eco-friendly online marketplace for buying and selling second-hand or new goods. Designed to promote sustainability, it offers a seamless platform for users to give pre-loved items a new life while reducing waste.',
     technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
     imageSrc: '/lylu.png',
@@ -125,7 +127,7 @@ const projects : Project[] = [
     title: 'Teacher Mutual Transfer Portal',
     category: 'Web Development',
     description: 'Teacher Transfer Hub is an intuitive web platform designed to simplify the teacher transfer process across schools. It enables educators to submit their transfer requests, discover matching teachers based on preferences, and connect with them directly. This system promotes transparency and ease in managing mutual transfers between schools and regions',
-    
+    timeframe :'‌ ‌Ongoing Project‌',
     technologies: ['React.js', 'MongoDB', 'Express.js', 'Node.js'],
     imageSrc: '/teacher.png',
      githubRepo: 'https://github.com/ZNilakshi/Swap.git',  
@@ -152,11 +154,14 @@ const projects : Project[] = [
     id: 'silva',
     title: 'De Silva Bar',
     category: 'Web Development',
+    timeframe: '‌ ‌Ongoing Project‌',
+    description: 'De Silva Bar is a full-service liquor e-commerce platform designed to streamline the online purchase and management of alcoholic beverages. It features a dynamic user interface for customers to browse and order products, along with a powerful admin dashboard for real-time stock tracking, product management, and order fulfillment. Built with performance, security, and usability in mind, the platform ensures a seamless shopping experience and efficient backend operations.',
     
-    description: 'De Silva Bar is a full-service liquor e-commerce platform designed to streamline the online purchase and management of alcoholic beverages. It features a dynamic user interface for customers to browse and order products, along with a powerful admin dashboard for real-time stock tracking, product management, and order fulfillment. Built with performance, security, and usability in mind, the platform ensures a seamless shopping experience and efficient backend operations.(ONGOING)',
     technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
     imageSrc: '/bar.png',
-    githubRepo: 'https://github.com/ZNilakshi/Library.git',  
+    githubRepo: 'https://github.com/ZNilakshi/Capstone-Project.git',  
+    deploymentLink: 'https://capstone-project-zeta-one.vercel.app',  
+ 
     features: [ "Real-time stock management ",
   "Secure online payment integration ",
   "User authentication with role-based access (Admin & Customer)",

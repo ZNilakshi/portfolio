@@ -11,6 +11,7 @@ export interface Project {
   category: string;
   description: string;
   client?: string;
+  timeframe?: string;
   technologies?: string[];
   imageSrc: string;
   link?: string;
@@ -76,7 +77,17 @@ const ProjectClientComponent: React.FC<ProjectClientComponentProps> = ({ project
     <p className="text-gray-400">{project.client}</p>
   </motion.div>
 )}
-
+    {project.timeframe && (
+  <motion.div 
+    initial={{ opacity: 0, x: -50 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.6 }}
+    className="bg-gray-800 p-6 rounded-lg shadow-lg w-full md:w-1/2"
+  >
+    <h3 className="text-xl font-semibold mb-2">Timeframe</h3>
+    <p className="text-gray-400">{project.timeframe}</p>
+  </motion.div>
+)}
 
         <motion.div 
           initial={{ opacity: 0, x: 50 }}
