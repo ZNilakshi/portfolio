@@ -148,6 +148,28 @@ const projects : Project[] = [
     type: 'Individual',  
     videoUrl: 'https://www.youtube.com/embed/your-video-id',
   }, 
+  {
+    id: 'silva',
+    title: 'De Silva Bar',
+    category: 'Web Development',
+    
+    description: 'De Silva Bar is a full-service liquor e-commerce platform designed to streamline the online purchase and management of alcoholic beverages. It features a dynamic user interface for customers to browse and order products, along with a powerful admin dashboard for real-time stock tracking, product management, and order fulfillment. Built with performance, security, and usability in mind, the platform ensures a seamless shopping experience and efficient backend operations.(ONGOING)',
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
+    imageSrc: '/bar.png',
+    githubRepo: 'https://github.com/ZNilakshi/Library.git',  
+    features: [ "Real-time stock management ",
+  "Secure online payment integration ",
+  "User authentication with role-based access (Admin & Customer)",
+  "Responsive and intuitive user interface for browsing and ordering",
+  "Admin dashboard for product management and order tracking",
+  "Cloud-based image storage with Cloudinary integration",
+  "Email notifications for order confirmations and updates",
+  "Search and filtering functionality for products",
+  "Cart and checkout system with order history",
+  "Mobile-friendly design for all screen sizes"
+    ],  
+    type: 'Group', 
+  }, 
 ];
 
 export async function generateStaticParams() {

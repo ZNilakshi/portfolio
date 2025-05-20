@@ -52,6 +52,12 @@ const projects: Project[] = [
     category: 'Web Development',
     imageSrc: '/teacher.png',
   },
+  {
+    id: 'silva',
+    title: 'De Silva Bar',
+    category: 'Web Development',
+    imageSrc: '/bar.png',
+  },
 ];
 
 export default function Work() {
