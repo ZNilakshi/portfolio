@@ -27,7 +27,7 @@ const projects: Project[] = [
   },
   {
     id: 'e-library',
-    title: 'E- Library',
+    title: 'E-Library',
     category: 'Web Development',
     imageSrc: '/elibrary.png',
     technologies: ['Next.js', 'Node.js', 'Express.js', 'MongoDB'],
