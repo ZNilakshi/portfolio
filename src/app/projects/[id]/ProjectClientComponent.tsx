@@ -21,7 +21,7 @@ export interface Project {
   githubRepo?: string;
   deploymentLink?: string;
   websiteLink?: string;
-  videoUrl?: string;
+ 
 }
 
 
