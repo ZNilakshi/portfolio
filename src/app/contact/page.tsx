@@ -24,7 +24,7 @@ const Contact = () => {
             <br /> <br />Whether you want to collaborate on a project or just chat, I&apos;d love to hear from you!
           </p>
           
-          {/* Action Buttons */}
+        
           <div className="mt-8 space-y-4 max-w-md">
             <button 
               onClick={handleEmailClick}
