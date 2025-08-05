@@ -21,7 +21,7 @@ export interface Project {
   githubRepo?: string;
   deploymentLink?: string;
   websiteLink?: string;
- 
+  videoUrl?: string;
 }
 
 
@@ -209,7 +209,7 @@ const ProjectClientComponent: React.FC<ProjectClientComponentProps> = ({ project
           ))}
         </motion.div>
       )}
-   { /*    
+      
 {project.videoUrl && (
   <motion.div 
     initial={{ opacity: 0, y: 30 }}
@@ -236,7 +236,7 @@ const ProjectClientComponent: React.FC<ProjectClientComponentProps> = ({ project
     )}
   </motion.div>
 )}
-  */}
+  
       {nextProject && (
         <motion.div 
           initial={{ opacity: 0, y: 30 }}

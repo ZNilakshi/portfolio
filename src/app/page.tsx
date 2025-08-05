@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const words = ["FRONTEND DEVELOPER", "FULLSTACK DEVELOPER", "SOFTWARE ENGINEER"];
+const words = ["UI/UX DESIGNER" ,"FRONTEND DEVELOPER", "FULLSTACK DEVELOPER", "SOFTWARE ENGINEER"];
 
 const ProfileCard: React.FC = () => {
   const [index, setIndex] = useState(0);

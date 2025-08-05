@@ -53,7 +53,7 @@ const projects : Project[] = [
           "Payment Integration "
         ], 
     type: 'Individual',  
-    videoUrl: 'https://www.youtube.com/embed/your-video-id',
+    
   }, 
   {
     id: 'e-library',
@@ -120,7 +120,9 @@ const projects : Project[] = [
     features: [ "Google OAuth Login - Secure authentication via Google",
       "Dynamic Product Listings - Post, browse, and filter  items",
       "Image Uploads (Cloudinary) - High-quality image storage & optimization",],  
-    type: 'Dual',  
+    type: 'Dual',
+   
+  
   }, 
   {
     id: 'teacher',
@@ -148,7 +150,7 @@ const projects : Project[] = [
     ],
     
     type: 'Individual',  
-    videoUrl: 'https://www.youtube.com/embed/your-video-id',
+    
   }, 
   {
     id: 'silva',
