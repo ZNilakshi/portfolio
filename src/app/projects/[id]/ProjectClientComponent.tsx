@@ -1,6 +1,5 @@
 'use client';
 
-
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -24,7 +23,6 @@ export interface Project {
   videoUrl?: string;
 }
 
-
 interface ProjectClientComponentProps {
   project: Project;
   nextProject?: Project;
@@ -32,83 +30,83 @@ interface ProjectClientComponentProps {
 
 const ProjectClientComponent: React.FC<ProjectClientComponentProps> = ({ project, nextProject }) => {
   return (
-    <div className="min-h-screen bg-gray-900 text-green-400 px-6 md:px-16 py-12 flex flex-col items-center">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black text-purple-300 px-6 md:px-16 py-12 flex flex-col items-center font-mono">
+      
+      {/* Top Nav */}
       <motion.nav 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="self-start text-gray-400 mb-8 w-full"
+        className="self-start text-gray-400 mb-10 w-full"
       >
-        <div className="flex items-center space-x-3">
-          {/* Back Button */}
-          <a href="/work" className="text-sm font-medium text-gray-400 hover:text-white transition">
-            Back
-          </a>
-
-          {/* Separator */}
-          <span className="text-sm text-gray-500">/</span>
-
-          {/* Project Title */}
-          <a href={`/projects/${project.id}`} className="text-lg font-semibold text-white hover:text-gray-300 transition">
-            {project.title}
-          </a>
-        </div>
+        <a 
+          href={`/projects/${project.id}`} 
+          className="text-lg font-semibold text-white hover:text-purple-400 transition"
+        >
+          {project.title}
+        </a>
       </motion.nav>
 
+      {/* Project Title */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="bg-gray-800 p-6 rounded-lg shadow-lg max-w-3xl w-full text-center"
+        transition={{ duration: 0.6 }}
+        className="bg-gray-800/70 backdrop-blur-lg border border-gray-700/50 p-8 rounded-2xl shadow-lg max-w-3xl w-full text-center"
       >
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">{project.title}</h1>
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+          {project.title}
+        </h1>
         <p className="text-lg text-gray-300">{project.description}</p>
       </motion.div>
 
-      <div className="flex flex-col md:flex-row justify-between items-center mt-10 w-full max-w-5xl gap-6">
-      {project.client && (
-  <motion.div 
-    initial={{ opacity: 0, x: -50 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.6 }}
-    className="bg-gray-800 p-6 rounded-lg shadow-lg w-full md:w-1/2"
-  >
-    <h3 className="text-xl font-semibold mb-2">Client</h3>
-    <p className="text-gray-400">{project.client}</p>
-  </motion.div>
-)}
-    {project.timeframe && (
-  <motion.div 
-    initial={{ opacity: 0, x: -50 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.6 }}
-    className="bg-gray-800 p-6 rounded-lg shadow-lg w-full md:w-1/2"
-  >
-    <h3 className="text-xl font-semibold mb-2">Timeframe</h3>
-    <p className="text-gray-400">{project.timeframe}</p>
-  </motion.div>
-)}
-
-        <motion.div 
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="bg-gray-800 p-6 rounded-lg shadow-lg w-full md:w-1/2"
-        >
-          <h3 className="text-xl font-semibold mb-2">Technologies</h3>
-          <p className="text-gray-400">{project.technologies?.join(', ')}</p>
-        </motion.div>
+      {/* Info Boxes */}
+      <div className="flex flex-col md:flex-row justify-between items-center mt-12 w-full max-w-5xl gap-6">
+        {project.client && (
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bg-gray-800/70 backdrop-blur-lg border border-gray-700/50 p-6 rounded-2xl shadow-lg hover:scale-105 transition-transform w-full md:w-1/2"
+          >
+            <h3 className="text-xl font-semibold text-white mb-2">Client</h3>
+            <p className="text-gray-400">{project.client}</p>
+          </motion.div>
+        )}
+        {project.timeframe && (
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bg-gray-800/70 backdrop-blur-lg border border-gray-700/50 p-6 rounded-2xl shadow-lg hover:scale-105 transition-transform w-full md:w-1/2"
+          >
+            <h3 className="text-xl font-semibold text-white mb-2">Timeframe</h3>
+            <p className="text-gray-400">{project.timeframe}</p>
+          </motion.div>
+        )}
+        {project.technologies && (
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bg-gray-800/70 backdrop-blur-lg border border-gray-700/50 p-6 rounded-2xl shadow-lg hover:scale-105 transition-transform w-full md:w-1/2"
+          >
+            <h3 className="text-xl font-semibold text-white mb-2">Technologies</h3>
+            <p className="text-gray-400">{project.technologies.join(', ')}</p>
+          </motion.div>
+        )}
       </div>
 
+      {/* Features */}
       {project.features && (
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="bg-gray-800 p-6 rounded-lg shadow-lg mt-6 w-full max-w-5xl"
+          className="bg-gray-800/70 backdrop-blur-lg border border-gray-700/50 p-6 rounded-2xl shadow-lg mt-8 w-full max-w-5xl"
         >
-          <h3 className="text-xl font-semibold mb-2">Features</h3>
-          <ul className="list-disc list-inside text-gray-400">
+          <h3 className="text-2xl font-semibold text-white mb-4">✨ Features</h3>
+          <ul className="list-disc list-inside text-gray-300 space-y-2">
             {project.features.map((feature, index) => (
               <li key={index}>{feature}</li>
             ))}
@@ -116,79 +114,70 @@ const ProjectClientComponent: React.FC<ProjectClientComponentProps> = ({ project
         </motion.div>
       )}
 
+      {/* Project Type */}
       {project.type && (
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="bg-gray-800 p-6 rounded-lg shadow-lg mt-6 w-full max-w-5xl"
+          className="bg-gray-800/70 backdrop-blur-lg border border-gray-700/50 p-6 rounded-2xl shadow-lg mt-6 w-full max-w-5xl text-center"
         >
-          <h3 className="text-xl font-semibold mb-2">Project Type</h3>
+          <h3 className="text-xl font-semibold text-white mb-2">Project Type</h3>
           <p className="text-gray-400">{project.type}</p>
         </motion.div>
       )}
 
-<div className="mt-8 flex gap-2 justify-center">
-  {project.githubRepo && (
-    <motion.a 
-      href={project.githubRepo} 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="px-5 py-3 bg-green-400 text-white rounded-lg text-sm font-medium shadow-md hover:bg-gray-700 transition-colors duration-300"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
-      GitHub Repository
-    </motion.a>
-  )}
+      {/* Buttons */}
+      <div className="mt-10 flex flex-wrap gap-3 justify-center">
+        {project.githubRepo && (
+          <motion.a 
+            href={project.githubRepo} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg text-sm font-medium shadow-md hover:shadow-purple-500/50 transition"
+          >
+            GitHub Repository
+          </motion.a>
+        )}
+        {project.deploymentLink && (
+          <motion.a 
+            href={project.deploymentLink} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg text-sm font-medium shadow-md hover:shadow-pink-500/50 transition"
+          >
+            View Deployment
+          </motion.a>
+        )}
+        {project.websiteLink && (
+          <motion.a 
+            href={project.websiteLink} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg text-sm font-medium shadow-md hover:shadow-pink-400/50 transition"
+          >
+            Visit Website
+          </motion.a>
+        )}
+      </div>
 
-  {project.deploymentLink && (
-    <motion.a 
-      href={project.deploymentLink} 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="px-5 py-3 bg-green-400 text-white rounded-lg text-sm font-medium shadow-md hover:bg-gray-700 transition-colors duration-300"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
-      View Deployment
-    </motion.a>
-  )}
-
-  {project.websiteLink && (
-    <motion.a 
-      href={project.websiteLink} 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="px-5 py-3 bg-green-400 text-white rounded-lg text-sm font-medium shadow-md hover:bg-gray-700 transition-colors duration-300"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
-      Visit Website
-    </motion.a>
-  )}
-</div>
-
-
-
+      {/* Main Image */}
       <motion.div 
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
-        className="mt-10 w-full max-w-5xl rounded-lg overflow-hidden shadow-lg"
+        className="mt-12 w-full max-w-5xl rounded-2xl overflow-hidden shadow-lg hover:scale-[1.02] transition-transform"
       >
         <Image 
           src={project.imageSrc} 
           alt={project.title} 
           width={1200} 
           height={800} 
-          className="rounded-lg object-cover w-full"
+          className="rounded-2xl object-cover w-full"
         />
       </motion.div>
 
+      {/* Gallery */}
       {project.imageGallery && project.imageGallery.length > 0 && (
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -197,7 +186,7 @@ const ProjectClientComponent: React.FC<ProjectClientComponentProps> = ({ project
           className="mt-10 w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {project.imageGallery.map((imgSrc, index) => (
-            <div key={index} className="rounded-lg overflow-hidden shadow-lg">
+            <div key={index} className="rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform">
               <Image 
                 src={imgSrc} 
                 alt={`Gallery Image ${index + 1}`} 
@@ -209,47 +198,49 @@ const ProjectClientComponent: React.FC<ProjectClientComponentProps> = ({ project
           ))}
         </motion.div>
       )}
-      
-{project.videoUrl && (
-  <motion.div 
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
-    className="mt-10 w-full max-w-5xl rounded-lg overflow-hidden shadow-lg"
-  >
-    {project.videoUrl.includes('youtube.com') || project.videoUrl.includes('vimeo.com') ? (
-      <div className="aspect-w-16 aspect-h-9">
-        <iframe 
-          src={project.videoUrl} 
-          className="w-full h-96 rounded-lg"
-          frameBorder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowFullScreen
-        ></iframe>
-      </div>
-    ) : (
-      <video 
-        controls 
-        className="w-full rounded-lg"
-        src={project.videoUrl}
-      />
-    )}
-  </motion.div>
-)}
-  
+
+      {/* Video */}
+      {project.videoUrl && (
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mt-12 w-full max-w-5xl rounded-2xl overflow-hidden shadow-lg border border-purple-500/30"
+        >
+          {project.videoUrl.includes('youtube.com') || project.videoUrl.includes('vimeo.com') ? (
+            <iframe 
+              src={project.videoUrl} 
+              className="w-full h-96 rounded-2xl"
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            ></iframe>
+          ) : (
+            <video controls className="w-full rounded-2xl" src={project.videoUrl} />
+          )}
+        </motion.div>
+      )}
+
+      {/* Next Project */}
       {nextProject && (
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mt-12 text-right w-full max-w-5xl"
+          className="mt-16 text-right w-full max-w-5xl"
         >
-          <a href={`/projects/${nextProject.id}`} className="text-xl font-semibold text-white hover:text-gray-300 transition flex justify-end items-center">
+          <a 
+            href={`/projects/${nextProject.id}`} 
+            className="text-xl font-semibold text-white hover:text-purple-400 transition flex justify-end items-center"
+          >
             <span>Next Project:</span>
-            <span className="ml-3 text-2xl">{nextProject.title}</span>
+            <span className="ml-3 text-2xl bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+              {nextProject.title}
+            </span>
           </a>
         </motion.div>
       )}
+
     </div>
   );
 };
