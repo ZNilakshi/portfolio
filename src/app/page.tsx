@@ -354,8 +354,7 @@ const ProjectCard: React.FC<Project> = ({
 };
 
 // Blog Card Component
-// Blog Card Component - Updated with clickable link
-// Blog Card Component - Alternative with Link wrapper
+
 const BlogCard: React.FC<BlogPost> = ({ title, excerpt, date, readTime, category, link, image }) => {
   const cardContent = (
     <>
@@ -771,7 +770,6 @@ const PortfolioPage: React.FC = () => {
         </div>
       </section>
 
-     {/* Gallery Section with Work Section Design */}
 {/* Gallery Section with Consistent Photo Sizing */}
 <section id="gallery" className="min-h-screen flex items-center justify-center py-20 px-4">
   <div className="max-w-6xl mx-auto w-full">
