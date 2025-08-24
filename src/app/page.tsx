@@ -118,10 +118,10 @@ const blogPosts: BlogPost[] = [
     id: '1',
     title: 'MERN App එකක් Dockerizing කරන ආකාරය',
     excerpt: 'Step-by-step guide on how to containerize a MERN application using Docker for easier deployment and scalability.',
-    date: 'Aug 15, 2023',
+    date: 'Aug 17, 2025',
     readTime: '7 min read',
     category: 'DevOps',
-    image: '/devops.webp',
+    image: '/docker.webp',
   
     link: 'https://medium.com/@nilakshisamarasekara0/mern-app-එකක්-dockerizing-කරන-ආකාරය-e56c3fc2efdc'
   },
@@ -129,10 +129,21 @@ const blogPosts: BlogPost[] = [
     id: '2',
     title: 'DevOps කියන්නේ මොකක්ද?',
     excerpt: 'An introduction to DevOps, its core principles, and why it is essential for modern software development teams.',
-    date: 'Sep 05, 2023',
+    date: 'Aug 20, 2025',
     readTime: '6 min read',
     category: 'DevOps',
-    image: '/docker.webp',
+    image: '/devops.webp',
+  
+    link: 'https://medium.com/@nilakshisamarasekara0/devops-කියන්නේ-මොකක්ද-c6b156365415'
+  },
+  {
+    id: '3',
+    title: 'Amazon S3 Buckets',
+    excerpt: 'An introduction to Amazon S3 Buckets',
+    date: 'Aug 24, 2025',
+    readTime: '6 min read',
+    category: 'Aws',
+    image: '/aws.webp',
   
     link: 'https://medium.com/@nilakshisamarasekara0/devops-කියන්නේ-මොකක්ද-c6b156365415'
   }
