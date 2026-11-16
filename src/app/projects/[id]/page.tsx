@@ -17,8 +17,6 @@ const projects : Project[] = [
       
     ],
         githubRepo: 'https://github.com/ZNilakshi/TAXI-booking.git',  
-    deploymentLink: 'https://ahasnabooking.vercel.app/',  
-    websiteLink: 'https://www.drivex.lk/',  
     features: [
       "User Authentication – Secure login and registration via email & password or Google Sign-In.",
       "Ride Booking System – Users can enter pickup & drop-off locations, date, and time to book a ride.",
@@ -42,7 +40,6 @@ const projects : Project[] = [
     technologies: ['React.js', 'MongoDB', 'Express.js', 'Node.js'],
     imageSrc: '/novacare.png',
      githubRepo: 'https://github.com/ZNilakshi/Nova-Care.git',  // GitHub repository link
-    deploymentLink: 'https://nova-care-ten.vercel.app/',  // Deployment link (if available)
         features: [
           "Appointment Booking",
           "Branch Locator",
@@ -83,7 +80,6 @@ const projects : Project[] = [
     technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
     imageSrc: '/nb.png',
      githubRepo: 'https://github.com/ZNilakshi/N-B.git',  
-    deploymentLink: 'https://n-b.vercel.app/',  
         features: [  "Ride Booking (Select destination and vehicle)",
       "Interactive Map ",
       "Responsive Vehicle Section ",
@@ -133,7 +129,6 @@ const projects : Project[] = [
     technologies: ['React.js', 'MongoDB', 'Express.js', 'Node.js'],
     imageSrc: '/teacher.png',
      githubRepo: 'https://github.com/ZNilakshi/Swap.git',  
-    deploymentLink: 'https://swap-ayoh.vercel.app',  
     features: [
       "Transfer Request Submission",
       "Preferred Location Selection",
@@ -162,7 +157,6 @@ const projects : Project[] = [
     technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
     imageSrc: '/bar.png',
     githubRepo: 'https://github.com/ZNilakshi/Capstone-Project.git',  
-    deploymentLink: 'https://capstone-project-zeta-one.vercel.app',  
  
     features: [ "Real-time stock management ",
   "Secure online payment integration ",
@@ -194,7 +188,6 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
   }
 
    const currentIndex = projects.findIndex((p) => p.id === params.id);
-  const nextProject = projects[currentIndex + 1] || null;
-
+   const nextProject = projects[(currentIndex + 1) % projects.length];
     return <ProjectClientComponent project={project} nextProject={nextProject} />;
 }

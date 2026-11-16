@@ -2,7 +2,17 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { Anton, DM_Sans } from 'next/font/google';
+import {
+  FaArrowLeft, FaArrowRight, FaGithub, FaUser, FaCalendarAlt, FaUsers, FaCheck,
+} from 'react-icons/fa';
+
+const display = Anton({ weight: '400', subsets: ['latin'] });
+const body = DM_Sans({ subsets: ['latin'] });
+
+/* cream #F6EBDD | ink #1E1612 | clay #C4542D | olive #5E6340 | sand #E9C98F */
 
 export interface Project {
   id: string;
@@ -16,302 +26,227 @@ export interface Project {
   link?: string;
   imageGallery?: string[];
   features?: string[];
-  type?: "Individual" | "Group" | "Dual";
+  type?: 'Individual' | 'Group' | 'Dual';
   githubRepo?: string;
-  deploymentLink?: string;
-  websiteLink?: string;
   videoUrl?: string;
 }
 
 interface ProjectClientComponentProps {
   project: Project;
-  nextProject?: Project;
+  nextProject?: Project | null;
 }
 
+/* removes hidden zero-width characters that were inside some timeframe strings */
+const clean = (s?: string) => (s ?? '').replace(/[\u200b-\u200d\ufeff]/g, '').replace(/\s+/g, ' ').trim();
+
+const Star = ({ className = '' }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
+    <path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0z" />
+  </svg>
+);
+
+const Globe = ({ className = '', stroke = '#E9C98F' }: { className?: string; stroke?: string }) => (
+  <svg viewBox="0 0 120 120" className={className} fill="none" stroke={stroke} strokeWidth="1" aria-hidden>
+    <circle cx="60" cy="60" r="52" />
+    {[18, 34, 46].map((rx) => <ellipse key={rx} cx="60" cy="60" rx={rx} ry="52" />)}
+    {[-36, -18, 0, 18, 36].map((y) => <ellipse key={y} cx="60" cy={60 + y} rx={Math.sqrt(52 * 52 - y * y)} ry="9" />)}
+  </svg>
+);
+
+const Pill = ({ children }: { children: React.ReactNode }) => (
+  <span className="inline-flex items-center gap-2 rounded-full border border-[#1E1612]/40 bg-[#F6EBDD] px-4 py-1.5 text-[11px] font-medium tracking-wide">
+    <span className="h-1.5 w-1.5 rounded-full bg-[#C4542D]" />{children}
+  </span>
+);
+
+const fade = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-40px' },
+  transition: { duration: 0.5, delay },
+});
+
 const ProjectClientComponent: React.FC<ProjectClientComponentProps> = ({ project, nextProject }) => {
+  const timeframe = clean(project.timeframe);
+
+  const infoCards = [
+    project.client && { icon: <FaUser />, label: 'CLIENT', value: project.client, tone: 'bg-[#C4542D] text-[#F6EBDD]' },
+    timeframe && { icon: <FaCalendarAlt />, label: 'TIMEFRAME', value: timeframe, tone: 'bg-[#5E6340] text-[#F6EBDD]' },
+    project.type && { icon: <FaUsers />, label: 'PROJECT TYPE', value: project.type, tone: 'bg-[#E9C98F] text-[#1E1612]' },
+  ].filter(Boolean) as { icon: React.ReactNode; label: string; value: string; tone: string }[];
+
   return (
-    <div className="min-h-screen bg-gray-900 text-purple-300 px-4 md:px-8 lg:px-16 py-8 flex flex-col items-center" style={{ fontFamily: "Courier New, Courier, monospace" }}>
-      {/* Navigation */}
-      <motion.nav 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="self-start mb-8 w-full flex justify-between items-center"
-      >
-        <a href="/" className="text-purple-400 hover:text-white transition-colors flex items-center group">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          Back to Portfolio
-        </a>
-        
-        <div className="text-xs bg-gray-800 px-3 py-1 rounded-full border border-purple-900/50">
-          {project.category}
+    <div className={`${body.className} min-h-screen bg-[#F6EBDD] px-3 pb-8 pt-24 text-[#1E1612] sm:px-6`}>
+      {/* Nav */}
+      <nav className="fixed left-0 top-3 z-50 w-full px-3 sm:px-6">
+        <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full bg-[#1E1612] px-5 py-2.5 shadow-xl">
+          <Link href="/" className="group flex items-center gap-3 text-[#F6EBDD]">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#C4542D] text-xs transition group-hover:-translate-x-1">
+              <FaArrowLeft />
+            </span>
+            <span className="text-[11px] font-bold tracking-wider">BACK TO PORTFOLIO</span>
+          </Link>
+          <span className="hidden items-center gap-2 text-[#F6EBDD] sm:flex">
+            <Star className="h-5 w-5 text-[#C4542D]" />
+            <span className={`${display.className} text-sm leading-none tracking-wide`}>NILAKSHI SAMARASEKARA</span>
+          </span>
+          <span className="rounded-full bg-[#E9C98F] px-4 py-1.5 text-[11px] font-bold text-[#1E1612]">{project.category}</span>
         </div>
-      </motion.nav>
+      </nav>
 
-      {/* Hero Section - Fixed layout */}
-      <div className="w-full max-w-6xl mb-12">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative w-full rounded-xl overflow-hidden mb-6"
-        >
-          <Image 
-            src={project.imageSrc} 
-            alt={project.title} 
-            width={1200} 
-            height={600} 
-            className="w-full h-64 md:h-96 object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent z-10"></div>
-        </motion.div>
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center px-4"
-        >
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">{project.title}</h1>
-          <p className="text-purple-200 text-lg md:text-xl max-w-3xl mx-auto">{project.description}</p>
-        </motion.div>
-      </div>
+      <main className="mx-auto max-w-6xl space-y-10">
+        {/* Hero */}
+        <section className="grid items-center gap-10 pt-4 lg:grid-cols-[1fr_1.1fr]">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <Pill>Project · {project.category}</Pill>
+            <h1 className={`${display.className} mt-6 text-[3rem] uppercase leading-[1] sm:text-[4.4rem]`}>
+              {project.title}
+            </h1>
+            <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-[#1E1612]/80">{project.description}</p>
 
-      {/* Project Details Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl mb-12">
-        {/* Project Info Cards */}
-        {project.client && (
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-gray-800/50 backdrop-blur-sm p-5 rounded-xl border border-purple-900/30"
-          >
-            <div className="flex items-center mb-3">
-              <div className="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
-              <h3 className="text-lg font-semibold text-white">Client</h3>
-            </div>
-            <p className="text-gray-300 pl-5">{project.client}</p>
-          </motion.div>
-        )}
-        
-        {project.timeframe && (
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-gray-800/50 backdrop-blur-sm p-5 rounded-xl border border-purple-900/30"
-          >
-            <div className="flex items-center mb-3">
-              <div className="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
-              <h3 className="text-lg font-semibold text-white">Timeframe</h3>
-            </div>
-            <p className="text-gray-300 pl-5">{project.timeframe}</p>
-          </motion.div>
-        )}
-        
-        {project.type && (
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-gray-800/50 backdrop-blur-sm p-5 rounded-xl border border-purple-900/30"
-          >
-            <div className="flex items-center mb-3">
-              <div className="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
-              <h3 className="text-lg font-semibold text-white">Project Type</h3>
-            </div>
-            <p className="text-gray-300 pl-5">{project.type}</p>
-          </motion.div>
-        )}
-      </div>
-
-      {/* Technologies Section */}
-      {project.technologies && (
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="w-full max-w-6xl mb-12 bg-gray-800/30 backdrop-blur-sm p-6 rounded-xl border border-purple-900/30"
-        >
-          <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-            </svg>
-            Technologies Used
-          </h3>
-          <div className="flex flex-wrap gap-3">
-            {project.technologies.map((tech, index) => (
-              <span key={index} className="px-4 py-2 bg-purple-900/30 text-purple-300 rounded-full text-sm border border-purple-800/50">
-                {tech}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-      )}
-
-      {/* Features Section */}
-      {project.features && (
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="w-full max-w-6xl mb-12 bg-gray-800/30 backdrop-blur-sm p-6 rounded-xl border border-purple-900/30"
-        >
-          <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Key Features
-          </h3>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {project.features.map((feature, index) => (
-              <li key={index} className="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-purple-400 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-gray-300">{feature}</span>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-      )}
-
-      {/* Action Buttons */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        className="flex flex-wrap gap-4 justify-center mb-12"
-      >
-        {project.githubRepo && (
-          <a 
-            href={project.githubRepo} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-transparent text-purple-400 rounded-lg font-medium border-2 border-purple-500/50 flex items-center hover:bg-purple-900/30 transition-all duration-300 group"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-            GitHub Repository
-          </a>
-        )}
-
-        {project.deploymentLink && (
-          <a 
-            href={project.deploymentLink} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-purple-600 text-white rounded-lg font-medium border-2 border-purple-600 flex items-center hover:bg-purple-700 hover:border-purple-700 transition-all duration-300 group"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-            View Deployment
-          </a>
-        )}
-
-        {project.websiteLink && (
-          <a 
-            href={project.websiteLink} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-gray-700 text-white rounded-lg font-medium border-2 border-gray-600 flex items-center hover:bg-gray-600 transition-all duration-300 group"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-            </svg>
-            Visit Website
-          </a>
-        )}
-      </motion.div>
-
-      {/* Video Section */}
-      {project.videoUrl && (
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
-          className="w-full max-w-4xl mb-12"
-        >
-          <h3 className="text-xl font-semibold text-white mb-4 text-center">Project Demo</h3>
-          <div className="rounded-xl overflow-hidden border border-purple-900/50 shadow-2xl">
-            {project.videoUrl.includes('youtube.com') || project.videoUrl.includes('vimeo.com') ? (
-              <div className="aspect-w-16 aspect-h-9">
-                <iframe 
-                  src={project.videoUrl} 
-                  className="w-full h-96"
-                  frameBorder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowFullScreen
-                ></iframe>
-              </div>
-            ) : (
-              <video 
-                controls 
-                className="w-full"
-                src={project.videoUrl}
-              />
+            {project.githubRepo && (
+              <a href={project.githubRepo} target="_blank" rel="noopener noreferrer"
+                className="group mt-7 inline-flex items-center gap-3 rounded-full bg-[#C4542D] py-2 pl-6 pr-2 text-xs font-bold text-[#F6EBDD]">
+                <FaGithub className="text-base" /> VIEW ON GITHUB
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#E9C98F] text-[#1E1612] transition group-hover:translate-x-1">
+                  <FaArrowRight />
+                </span>
+              </a>
             )}
-          </div>
-        </motion.div>
-      )}
+          </motion.div>
 
-      {/* Image Gallery */}
-      {project.imageGallery && project.imageGallery.length > 0 && (
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.8 }}
-          className="w-full max-w-6xl mb-12"
-        >
-          <h3 className="text-xl font-semibold text-white mb-6 text-center">Project Gallery</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {project.imageGallery.map((imgSrc, index) => (
-              <motion.div 
-                key={index} 
-                className="rounded-xl overflow-hidden border border-purple-900/50 shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
-                whileHover={{ y: -5 }}
-              >
-                <Image 
-                  src={imgSrc} 
-                  alt={`Gallery Image ${index + 1}`} 
-                  width={400} 
-                  height={300} 
-                  className="object-cover w-full h-56 hover:scale-105 transition-transform duration-500"
-                />
+          <motion.div className="relative" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7 }}>
+            <div className="absolute -bottom-4 -right-4 h-full w-full rounded-[2.2rem] bg-[#5E6340]" />
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[2.2rem] border-2 border-[#1E1612] bg-[#1E1612]">
+              <Image src={project.imageSrc} alt={project.title} fill priority
+                sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
+            </div>
+            <Star className="absolute -left-3 -top-3 h-10 w-10 text-[#C4542D]" />
+            <Star className="absolute -bottom-6 left-10 h-6 w-6 text-[#1E1612]" />
+          </motion.div>
+        </section>
+
+        {/* Info cards */}
+        {infoCards.length > 0 && (
+          <section className="grid gap-4 sm:grid-cols-3">
+            {infoCards.map((c, i) => (
+              <motion.div key={c.label} {...fade(i * 0.08)}
+                className="flex items-center gap-4 rounded-[1.4rem] border-2 border-[#1E1612] bg-[#F6EBDD] p-4">
+                <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-lg ${c.tone}`}>{c.icon}</span>
+                <div className="min-w-0">
+                  <p className="text-[10px] font-extrabold tracking-[0.2em] text-[#C4542D]">{c.label}</p>
+                  <p className="mt-0.5 text-sm font-bold leading-snug">{c.value}</p>
+                </div>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
-      )}
+          </section>
+        )}
 
-      {/* Next Project */}
-      {nextProject && (
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="w-full max-w-6xl mt-8 mb-12 text-center"
-        >
-          <div className="border-t border-gray-700 pt-8">
-            <p className="text-gray-400 mb-4">Continue Exploring</p>
-            <a 
-              href={`/projects/${nextProject.id}`} 
-              className="group inline-flex items-center text-xl font-semibold text-white hover:text-purple-300 transition-colors"
-            >
-              <span>Next Project: {nextProject.title}</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </div>
-        </motion.div>
-      )}
+        {/* Technologies */}
+        {project.technologies && project.technologies.length > 0 && (
+          <motion.section {...fade()} className="relative overflow-hidden rounded-[2rem] bg-[#1E1612] p-6 text-[#F6EBDD] sm:p-8">
+            <Globe className="pointer-events-none absolute -right-12 -top-12 h-56 w-56 opacity-20" />
+            <p className="relative text-[11px] font-bold tracking-[0.25em] text-[#E9C98F]">TECHNOLOGIES USED</p>
+            <div className="relative mt-4 flex flex-wrap gap-3">
+              {project.technologies.map((t) => (
+                <span key={t} className="rounded-full border border-[#E9C98F]/60 px-5 py-2 text-sm font-bold text-[#E9C98F] transition hover:bg-[#E9C98F] hover:text-[#1E1612]">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </motion.section>
+        )}
+
+        {/* Features */}
+        {project.features && project.features.length > 0 && (
+          <section>
+            <p className="text-[11px] font-bold tracking-[0.25em] text-[#C4542D]">KEY FEATURES</p>
+            <h2 className={`${display.className} mt-1 text-4xl uppercase leading-none sm:text-5xl`}>
+              What it <span className="text-[#C4542D]">does</span>
+            </h2>
+            <ul className="mt-6 grid gap-4 md:grid-cols-2">
+              {project.features.map((f, i) => {
+                const [head, ...tail] = f.trim().split(/\s[–-]\s/);
+                const rest = tail.join(' – ');
+                return (
+                  <motion.li key={i} {...fade((i % 2) * 0.06)}
+                    className="flex items-start gap-4 rounded-[1.4rem] border border-[#C4542D]/50 bg-[#F6EBDD] p-4 transition hover:-translate-y-1 hover:border-[#C4542D]">
+                    <span className={`${display.className} text-3xl leading-none text-[#C4542D]`}>{String(i + 1).padStart(2, '0')}</span>
+                    <div className="min-w-0">
+                      <p className="flex items-center gap-2 text-sm font-extrabold">
+                        <FaCheck className="text-[10px] text-[#5E6340]" /> {head}
+                      </p>
+                      {rest && <p className="mt-1 text-sm leading-relaxed text-[#1E1612]/75">{rest}</p>}
+                    </div>
+                  </motion.li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
+
+        {/* Video */}
+        {project.videoUrl && (
+          <motion.section {...fade()} className="mx-auto w-full max-w-4xl">
+            <p className="text-center text-[11px] font-bold tracking-[0.25em] text-[#C4542D]">PROJECT DEMO</p>
+            <div className="relative mt-4">
+              <div className="absolute -bottom-3 -right-3 h-full w-full rounded-[1.6rem] bg-[#5E6340]" />
+              <div className="relative overflow-hidden rounded-[1.6rem] border-2 border-[#1E1612] bg-[#1E1612]">
+                {project.videoUrl.includes('youtube.com') || project.videoUrl.includes('vimeo.com') ? (
+                  <iframe src={project.videoUrl} title={`${project.title} demo`} className="aspect-video w-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+                ) : (
+                  <video controls className="w-full" src={project.videoUrl} />
+                )}
+              </div>
+            </div>
+          </motion.section>
+        )}
+
+        {/* Gallery */}
+        {project.imageGallery && project.imageGallery.length > 0 && (
+          <section>
+            <p className="text-[11px] font-bold tracking-[0.25em] text-[#C4542D]">SCREENS</p>
+            <h2 className={`${display.className} mt-1 text-4xl uppercase leading-none sm:text-5xl`}>
+              Project <span className="text-[#C4542D]">gallery</span>
+            </h2>
+            <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {project.imageGallery.map((src, i) => (
+                <motion.div key={src + i} {...fade(i * 0.06)} className="relative">
+                  <div className={`absolute -bottom-2 -right-2 h-full w-full rounded-[1.4rem] ${['bg-[#5E6340]', 'bg-[#C4542D]', 'bg-[#E9C98F]'][i % 3]}`} />
+                  <div className="group relative aspect-[4/3] overflow-hidden rounded-[1.4rem] border-2 border-[#1E1612] bg-[#1E1612]">
+                    <Image src={src} alt={`${project.title} screen ${i + 1}`} fill sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition duration-700 group-hover:scale-105" />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Next project */}
+        {nextProject && (
+          <motion.div {...fade()}>
+            <Link href={`/projects/${nextProject.id}`}
+              className="group relative flex flex-wrap items-center justify-between gap-6 overflow-hidden rounded-[2rem] bg-[#C4542D] p-7 text-[#F6EBDD] shadow-[8px_8px_0_#1E1612] transition duration-300 hover:-translate-x-1 hover:-translate-y-1 sm:p-10">
+              <Globe className="pointer-events-none absolute -right-10 -top-10 h-64 w-64 opacity-30" stroke="#F6EBDD" />
+              <div className="relative">
+                <p className="text-xs font-bold tracking-[0.2em] text-[#E9C98F]">CONTINUE EXPLORING · NEXT PROJECT</p>
+                <h3 className={`${display.className} mt-2 text-4xl uppercase leading-none sm:text-6xl`}>{nextProject.title}</h3>
+              </div>
+              <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#E9C98F] text-[#1E1612] transition group-hover:translate-x-2">
+                <FaArrowRight className="text-xl" />
+              </span>
+            </Link>
+          </motion.div>
+        )}
+
+        {/* Footer */}
+        <footer className="flex flex-wrap items-center justify-between gap-3 rounded-full bg-[#1E1612] px-6 py-4 text-xs text-[#F6EBDD]/80">
+          <span className="flex items-center gap-2"><Star className="h-5 w-5 text-[#C4542D]" /> Nilakshi Samarasekara · Software Engineer</span>
+          <Link href="/" className="font-bold text-[#E9C98F] hover:underline">← Back to portfolio</Link>
+        </footer>
+      </main>
     </div>
   );
 };
